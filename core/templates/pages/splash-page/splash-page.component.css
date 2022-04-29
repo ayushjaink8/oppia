@@ -64,7 +64,9 @@
   background-color: #f4f4f4;
   color: #2c4841;
   display: flex;
-  padding: 50px 5vw 50px 8vw;
+  gap: 8vw;
+  justify-content: center;
+  padding: 50px 5vw;
   width: 100vw;
 }
 
@@ -318,16 +320,6 @@
   margin-top: 25px;
 }
 
-.splash-page .oppia-splash-section-three-right {
-  margin: auto;
-}
-
-.splash-page .oppia-splash-section-three-left {
-  align-items: center;
-  display: flex;
-  width: 50%;
-}
-
 .splash-page .splash-matthew-image img {
   max-width: 600px;
   width: 100%;
@@ -557,5 +549,11 @@
   .splash-page .oppia-splash-h2-text {
     font-size: 1.05em;
     font-weight: 600;
+  }
+  @media screen and (max-width: 768px) {
+    .splash-page .oppia-splash-icon-3-container {
+      display: block;
+      margin-left: 12vw;
+    }
   }
 }
