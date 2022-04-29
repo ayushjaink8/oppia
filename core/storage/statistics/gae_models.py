@@ -2372,3 +2372,139 @@ class StateAnswersCalcOutputModel(base_models.BaseMapReduceBatchResultsModel):
             'calculation_output_type': base_models.EXPORT_POLICY.NOT_APPLICABLE,
             'calculation_output': base_models.EXPORT_POLICY.NOT_APPLICABLE
         })
+
+
+# class ContributorDashboardTranslationStatsModel(base_models.BaseModel):
+#     """Model for the contributor dashboard translation stats.
+
+#     This should be used whenever we need the translation stats of
+#     all the topics for a particular language.
+
+#     A ContributorDashboardStatsModel instance stores the following information:
+#         language_code, topic_id, topic_name, classroom, language_code,
+#         total_stories, total_chapters, stats, translated_stories,
+#         translated_chapters, language_progress, skills_assigned,
+#         subtopics, status.
+
+#     This model is keyed using a custom ID of the format
+#     {[LANGUAGE_CODE]:[TOPIC_ID]}.
+#     """
+
+#     # The ISO 639-1 code for the language.
+#     language_code = datastore_services.StringProperty(
+#         required=True, indexed=True)
+#     # The topic id of the current topic.
+#     topic_id = datastore_services.StringProperty(required=True, indexed=True)
+#     # The name of the topic.
+#     topic_name = datastore_services.StringProperty(required=True, indexed=True)
+#     # The classroom to which the current topic is assigned.
+#     classroom = datastore_services.StringProperty(indexed=False)
+
+#     # Total number of stories present in the topic.
+#     total_stories = datastore_services.IntegerProperty(
+#         indexed=True, required=False)
+#     # Total number of chapters present in the topic.
+#     total_chapters = datastore_services.IntegerProperty(
+#         indexed=True, required=False)
+#     # A key-value pair of the form:
+#     # {  'stats': {
+#     #        ‘total_stories’: '',
+#     #        ‘total_chapters’: '',
+#     #    }
+#     # }
+#     stats = datastore_services.JsonProperty(required=True)
+
+#     # Total number of stories translated (available in current language)
+#     # in the topic.
+#     translated_stories = datastore_services.IntegerProperty(
+#         indexed=True, required=False)
+#     # Total number of chapters translated (available in current language)
+#     # in the topic.
+#     translated_chapters = datastore_services.IntegerProperty(
+#         indexed=True, required=False)
+#     # A key-value pair of the form:
+#     # {  'language_progress': {
+#     #        ‘translated_stories’: '',
+#     #        ‘translated_chapters’: '',
+#     #    }
+#     # }
+#     language_progress = datastore_services.JsonProperty(required=True)
+
+#     # Total number of skills assigned to the topic.
+#     skills_assigned = datastore_services.IntegerProperty(
+#         required=True, indexed=True)
+#     # Total number of subtopics current topic have.
+#     subtopics = datastore_services.IntegerProperty(
+#         required=True, indexed=True)
+#     # Status of current topic
+#     # "assigned" or "not assigned" to any classroom.
+#     status = datastore_services.StringProperty(required=True, indexed=True)
+
+
+#     @classmethod
+#     def get_language_stats(cls, language_code: str) -> (
+#             Sequence[ContributorDashboardTranslationStatsModel]):
+#         """Fetches all the stats that belongs to a particular language.
+
+#         Args:
+#             language_code: string. The ISO 639-1 code for the language.
+
+#         Returns:
+#             iterable. An iterable with all the stats that
+#             belongs to the given language.
+#         """
+#         return ContributorDashboardTranslationStatsModel.query().filter(
+#             ContributorDashboardTranslationStatsModel.language_code == (
+#                 language_code)
+#         ).fetch(feconf.DEFAULT_QUERY_LIMIT)
+
+
+# class LanguageOverallTranslationStatsModel(base_models.BaseModel):
+#     """Model for the overall language translation stats.
+
+#     This should be used when we want to show the overall stats of all the
+#     languages in contributor dashboard (language-view).
+
+#     A ContributorDashboardStatsModel instance stores the following information:
+
+#         language_code, language_name, canonical_stories, chapters
+#         cards, recent_rate_of_progress, first_day_of_month_progress
+
+#     This model is keyed using language_code.
+#     """
+
+#     # The ISO 639-1 code for the language.
+#     language_code = datastore_services.StringProperty(
+#         required=True, indexed=True)
+#     # The name of the language.
+#     language_name = datastore_services.StringProperty(
+#         required=True, indexed=True)
+
+#     # Total no. of canonical stories translated (available) in the
+#     # language considering all the topics.
+#     total_canonical_stories = datastore_services.IntegerProperty(required=True)
+#     # Total no. of chapters translated in the language.
+#     total_chapters = datastore_services.IntegerProperty(required=True)
+#     # Total no. of cards translated in the language.
+#     total_cards = datastore_services.IntegerProperty(required=True)
+
+#     # Total no. of words translated in the language in last 30 days.
+#     recent_rate_of_progress = datastore_services.IntegerProperty(
+#         indexed=True, required=True)
+#     # Number of words translated on the last 30th day from today.
+#     # This data will be used to calculate the recent rate of progress.
+#     first_day_of_month_progress = datastore_services.IntegerProperty(
+#         indexed=True, required=True)
+
+    # @classmethod
+    # def get_export_policy(cls) -> Dict[str, base_models.EXPORT_POLICY]:
+    #     """Model doesn't contain any data directly corresponding to a user."""
+    #     return dict(super(cls, cls).get_export_policy(), **{
+    #         'language_code': base_models.EXPORT_POLICY.NOT_APPLICABLE,
+    #         'language_name': base_models.EXPORT_POLICY.NOT_APPLICABLE,
+    #         'total_canonical_stories': base_models.EXPORT_POLICY.NOT_APPLICABLE,
+    #         'total_chapters': base_models.EXPORT_POLICY.NOT_APPLICABLE,
+    #         'total_cards': base_models.EXPORT_POLICY.NOT_APPLICABLE,
+    #         'recent_rate_of_progress': base_models.EXPORT_POLICY.NOT_APPLICABLE,
+    #         'first_day_of_month_progress': base_models.EXPORT_POLICY.NOT_APPLICABLE
+    #     })

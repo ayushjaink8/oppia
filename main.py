@@ -242,6 +242,9 @@ URLS = [
         r'/contributionrightshandler/<category>',
         contributor_dashboard_admin.ContributionRightsHandler),
     get_redirect_route(
+        r'/contributordashboardstatshandler/data',
+        contributor_dashboard.ContributorDashboardStatsHandler),
+    get_redirect_route(
         r'/getcontributorusershandler/<category>',
         contributor_dashboard_admin.ContributorUsersListHandler),
     get_redirect_route(

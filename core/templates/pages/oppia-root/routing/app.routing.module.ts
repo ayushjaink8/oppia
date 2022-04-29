@@ -105,6 +105,11 @@ const routes: Route[] = [
       .then(m => m.LibraryPageModule)
   },
   {
+    path: "contributor-dashboard-stats",
+    loadChildren: () => import('pages/contributor-dashboard-stats-page/contributor-dashboard-stats-page.module')
+      .then(m => m.ContributorDashboardStatsPageModule)
+  },
+  {
     path: AppConstants.PAGES_REGISTERED_WITH_FRONTEND.SPLASH.ROUTE,
     pathMatch: 'full',
     canLoad: [CanAccessSplashPageGuard],

@@ -523,3 +523,94 @@ class AllTopicNamesHandler(base.BaseHandler):
             'topic_names': topic_names
         }
         self.render_json(self.values)
+
+
+class ContributorDashboardStatsHandler(base.BaseHandler):
+    """Provides stats of all languages for contributor dashboard."""
+
+    GET_HANDLER_ERROR_RETURN_TYPE = feconf.HANDLER_TYPE_JSON
+    URL_PATH_ARGS_SCHEMAS = {}
+    HANDLER_ARGS_SCHEMAS = {
+        'GET': {
+            'language_code': {
+                'schema': {
+                    'type': 'basestring',
+                    'validators': [{
+                        'id': 'is_valid_audio_language_code'
+                    }]
+                }
+            },
+            'topic_id': {
+                'schema': {
+                    'type': 'basestring'
+                }
+            }
+        }
+    }
+
+    @acl_decorators.open_access
+    def get(self):
+        """Handles GET requests."""
+        language_code = self.normalized_request.get('language_code')
+        topic_id = self.normalized_request.get('topic_id')
+        temp = {
+            'language_code': language_code,
+            'topic_id': topic_id
+        }
+        self.render_json(temp)
+
+
+# class PracticeQuestionProgressStatsHandler(base.BaseHandler):
+#     """Provides data for the user's skills dashboard page."""
+
+#     GET_HANDLER_ERROR_RETURN_TYPE = feconf.HANDLER_TYPE_JSON
+#     URL_PATH_ARGS_SCHEMAS = {}
+#     HANDLER_ARGS_SCHEMAS = {
+#         'POST': {
+#             'classroom_name': {
+#                 'schema': {
+#                     'type': 'basestring'
+#                 }
+#             },
+#             'next_cursor': {
+#                 'schema': {
+#                     'type': 'basestring'
+#                 },
+#                 'default_value': None
+#             },
+#             'keywords': {
+#                 'schema': {
+#                     'type': 'list',
+#                     'items': {
+#                         'type': 'basestring'
+#                     }
+#                 }
+#             },
+#             'num_skills_to_fetch': {
+#                 'schema': {
+#                     'type': 'int',
+#                     'validators': [{
+#                         'id': 'is_at_least',
+#                         'min_value': 1
+#                     }]
+#                 }
+#             },
+#             'sort': {
+#                 'schema': {
+#                     'type': 'basestring'
+#                 },
+#                 'choices': constants.CONTRIBUTOR_DASHBOARD_STATS_SORT_OPTIONS
+#             },
+#             'status': {
+#                 'schema': {
+#                     'type': 'basestring'
+#                 },
+#                 'choices': constants.SKILL_STATUS_OPTIONS
+#             }
+#         }
+#     }
+
+#     @acl_decorators.can_access_topics_and_skills_dashboard
+#     def post(self):
+#         """Handles POST requests."""
+

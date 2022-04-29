@@ -1875,3 +1875,237 @@ class LearnerAnswerInfo:
         learner_answer_info_dict = self.to_dict()
         return sys.getsizeof(
             json.dumps(learner_answer_info_dict, default=str))
+
+
+# class OverallSkillStats:
+#     """Domain object for Skill Statistics which has all the properties
+#     of AugmentedSkillSummary along with the number of practice question
+#     a skill have.
+#     """
+
+#     def __init__(
+#             self, skill_id, description, language_code, version,
+#             misconception_count, worked_examples_count,
+#             practice_questions_count, topic_names, classroom_names,
+#             skill_model_created_on, skill_model_last_updated):
+#         """Constructs an OverallSkillStats domain object.
+
+#         Args:
+#             skill_id: str. The unique id of the skill.
+#             description: str. The short description of the skill.
+#             language_code: str. The language code of the skill.
+#             version: int. The version of the skill.
+#             misconception_count: int. The number of misconceptions associated
+#                 with the skill.
+#             worked_examples_count: int. The number of worked examples in the
+#                 skill.
+#             practice_questions_count: int. The number of practice questions in
+#                 the skill.
+#             topic_names: list(str). The names of the topics to which the skill
+#                 is assigned.
+#             classroom_names: list(str). The names of the classrooms to which the
+#                 skill is assigned.
+#             skill_model_created_on: datetime.datetime. Date and time when
+#                 the skill model is created.
+#             skill_model_last_updated: datetime.datetime. Date and time
+#                 when the skill model was last updated.
+#         """
+#         self.id = skill_id
+#         self.description = description
+#         self.language_code = language_code
+#         self.version = version
+#         self.misconception_count = misconception_count
+#         self.worked_examples_count = worked_examples_count
+#         self.practice_questions_count = practice_questions_count
+#         self.skill_model_created_on = skill_model_created_on
+#         self.skill_model_last_updated = skill_model_last_updated
+#         self.topic_names = topic_names
+#         self.classroom_names = classroom_names
+
+#     def to_dict(self):
+#         """Returns a dictionary representation of this domain object.
+
+#         Returns:
+#             dict. A dict representing this OverallSkillStats object.
+#         """
+#         return {
+#             'id': self.id,
+#             'description': self.description,
+#             'language_code': self.language_code,
+#             'version': self.version,
+#             'misconception_count': self.misconception_count,
+#             'worked_examples_count': self.worked_examples_count,
+#             'practice_questions_count': self.practice_questions_count,
+#             'topic_names': self.topic_names,
+#             'classroom_names': self.classroom_names,
+#             'skill_model_created_on': utils.get_time_in_millisecs(
+#                 self.skill_model_created_on),
+#             'skill_model_last_updated': utils.get_time_in_millisecs(
+#                 self.skill_model_last_updated)
+#         }
+
+
+# class OverallLanguageTranslationStats:
+#     """Domain object for language-wise Statistics which has all the required
+#     properties for showing general statistics.
+#     """
+
+#     def __init__(
+#             self, language_code, language_description, stories_count,
+#             chapters_count, cards_count, recent_rate_of_progress):
+#         """Constructs an OverallLanguageTranslationStats domain object.
+
+#         Args:
+#             language_code: str. The unique language code of the language.
+#             language_description: str. The name of the language.
+#             stories_count: int. The number of stories completly in
+#                 the language.
+#             chapters_count: int. The number of chapters(story_nodes) completly
+#                 available in the language.
+#             cards_count: int. The number of cards(node_content) available in
+#                 the language.
+#             recent_rate_of_progress: int. The total number of words translated
+#                 in the previous month in the language.
+#         """
+#         self.language_code = language_code
+#         self.language_description = language_description
+#         self.stories_count = stories_count
+#         self.chapters_count = chapters_count
+#         self.cards_count = cards_count
+#         self.recent_rate_of_progress = recent_rate_of_progress
+
+#     def to_dict(self):
+#         """Returns a dictionary representation of this domain object.
+
+#         Returns:
+#             dict. A dict representing this OverallLanguageTranslationStats
+#             object.
+#         """
+#         return {
+#             'language_code': self.language_code,
+#             'language_description': self.language_description,
+#             'stories_count': self.stories_count,
+#             'chapters_count': self.chapters_count,
+#             'cards_count': self.cards_count,
+#             'recent_rate_of_progress': self.recent_rate_of_progress
+#         }
+
+
+# class OverallTopicTranslationStats:
+#     """Domain object for topic-wise Statistics.It has all the required
+#     properties for showing general statistics.
+#     """
+
+#     def __init__(
+#             self, language_code, language_description, total_stories_count,
+#             total_chapters_count, translated_stories_count,
+#             translated_chapters_count, status):
+#         """Constructs an OverallLanguageTranslationStats domain object.
+
+#         Args:
+#             language_code: str. The unique language code of the language.
+#             language_description: str. The name of the language.
+#             total_stories_count: int. The number of stories completly in
+#                 the language.
+#             total_chapters_count: int. The number of chapters(story_nodes)
+#                 completly available in the language.
+#             translated_stories_count: int. The number of stories completly in
+#                 the language.
+#             translated_chapters_count: int. The number of chapters(story_nodes)
+#                 completly available in the language.
+#             status: str. The status of current topic (published or not
+#                 published).
+#         """
+#         self.language_code = language_code
+#         self.language_description = language_description
+#         self.total_stories_count = total_stories_count
+#         self.total_chapters_count = total_chapters_count
+#         self.translated_stories_count = translated_stories_count
+#         self.translated_chapters_count = translated_chapters_count
+#         self.status = status
+
+#     def to_dict(self):
+#         """Returns a dictionary representation of this domain object.
+
+#         Returns:
+#             dict. A dict representing this OverallLanguageTranslationStats
+#             object.
+#         """
+#         return {
+#             'language_code': self.language_code,
+#             'language_description': self.language_description,
+#             'total_stories_count': self.total_stories_count,
+#             'total_chapters_count': self.total_chapters_count,
+#             'translated_stories_count': self.translated_stories_count,
+#             'translated_chapters_count': self.translated_chapters_count,
+#             'status': self.status
+#         }
+
+
+# class DetailedTopicTranslationStats:
+#     """Domain object for story-wise Statistics.It has all the properties of
+#     OverallTopicTranslationStats along wth story and subtopic details.
+#     """
+
+#     def __init__(
+#             self, language_code, language_description, total_stories_count,
+#             total_chapters_count, translated_stories_count,
+#             translated_chapters_count, status, total_subtopics_count,
+#             total_skills_count, story_details, subtopic_details):
+#         """Constructs an DetailedTopicTranslationStats domain object.
+
+#         Args:
+#             language_code: str. The unique language code of the language.
+#             language_description: str. The name of the language.
+#             total_stories_count: int. The number of stories completly in
+#                 the language.
+#             total_chapters_count: int. The number of chapters(story_nodes)
+#                 completly available in the language.
+#             translated_stories_count: int. The number of stories completly in
+#                 the language.
+#             translated_chapters_count: int. The number of chapters(story_nodes)
+#                 completly available in the language.
+#             status: str. The status of current topic (published or not
+#                 published).
+#             total_subtopics_count: int. Total number of subtopics assigned to
+#                 the topic.
+#             total_skills_count: int. Total number of stories assigned to
+#                 the topic.
+#             story_details: list(dict). List of all the stories along
+#                 with their details like story_description and chapter_details.
+#             subtopic_details: list(dict). List of all the subtopic along
+#                 with their details like subtopic_description and skill_details.
+#         """
+#         self.language_code = language_code
+#         self.language_description = language_description
+#         self.total_stories_count = total_stories_count
+#         self.total_chapters_count = total_chapters_count
+#         self.translated_stories_count = translated_stories_count
+#         self.translated_chapters_count = translated_chapters_count
+#         self.total_subtopics_count = total_subtopics_count
+#         self.total_skills_count = total_skills_count
+#         self.status = status
+#         self.story_details = story_details
+#         self.subtopic_details = subtopic_details
+
+
+#     def to_dict(self):
+#         """Returns a dictionary representation of this domain object.
+
+#         Returns:
+#             dict. A dict representing this DetailedTopicTranslationStats
+#             object.
+#         """
+#         return {
+#             'language_code': self.language_code,
+#             'language_description': self.language_description,
+#             'total_stories_count': self.total_stories_count,
+#             'total_chapters_count': self.total_chapters_count,
+#             'translated_stories_count': self.translated_stories_count,
+#             'translated_chapters_count': self.translated_chapters_count,
+#             'total_subtopics_count': self.total_subtopics_count,
+#             'total_skills_count': self.total_skills_count,
+#             'status': self.status,
+#             'story_details': self.story_details,
+#             'subtopic_details': self.subtopic_details
+#         }
